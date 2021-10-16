@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app-frontend:
+    build: 
+      context: ./fronend
+      target: production
+
+  app-backend:
+    build: ./backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+
+  database:
+    image: postgres:12
+    env_file:
+      - ./backend/.env
+    ports:
+      - "5432:5432"
+
