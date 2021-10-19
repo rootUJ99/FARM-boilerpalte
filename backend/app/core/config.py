@@ -16,24 +16,22 @@ class Settings(BaseSettings):
             return [*v, 'http://localhost:3000']
         raise ValueError(v)
 
-    POSTGRES_SERVER: str
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_DB: str
-    DATABASE_URI: Optional[PostgresDsn] = None
+    DB_NAME: str
+
+    @validator("DB_NAME", pre=True)
+    def add_db_name(cls, v:Optional[str], values: Dict[str, Any]) -> str:
+        if isinstance(v, str):
+            return v
+        return values.get("DB_NAME")
+
+    DATABASE_URI: str
 
     @validator("DATABASE_URI", pre=True)
     def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
         if isinstance(v, str):
             return v
-        return PostgresDsn.build(
-            scheme="postgresql",
-            user=values.get("POSTGRES_USER"),
-            password=values.get("POSTGRES_PASSWORD"),
-            host=values.get("POSTGRES_SERVER"),
-            path=f"/{values.get('POSTGRES_DB') or ''}",
-        )
-    
+        return values.get("DATABASE_URI")
+
 
     class Config:
         case_sensitive = True

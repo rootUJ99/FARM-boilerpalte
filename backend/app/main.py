@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from motor.motor_asyncio import AsyncIOMotorClient
 
 from app.core.config import settings
 from app.api.start import api
@@ -14,6 +15,15 @@ def get_application():
         allow_methods=["*"],
         allow_headers=["*"],
     )
+    @_app.on_event("startup")
+    async def startup_db_client():
+        _app.mongodb_client = AsyncIOMotorClient(settings.DATABASE_URI)
+        _app.mongodb = app.mongodb_client[settings.DB_NAME]
+
+
+    @_app.on_event("shutdown")
+    async def shutdown_db_client():
+        _app.mongodb_client.close()
 
     return _app
 
