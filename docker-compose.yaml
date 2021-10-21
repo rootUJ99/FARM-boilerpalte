@@ -12,17 +12,17 @@ services:
       - backend/.env
     ports:
       - "8000:8000"
-  #   depends_on: 
-  #     - database
+    depends_on: 
+      - database
 
-  # database:
-  #   image: mongo
-  #   restart: always
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: root
-  #     MONGO_INITDB_ROOT_PASSWORD: toor
-  #   env_file:
-  #     - backend/.env
-  #   ports:
-  #     - "27017:27017"
+  database:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: toor
+    env_file:
+      - backend/.env
+    ports:
+      - "27017:27017"
 
