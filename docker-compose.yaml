@@ -25,4 +25,9 @@ services:
       - backend/.env
     ports:
       - "27017:27017"
+    volumes:
+      - datastore:/data/db
+
+volumes:
+  datastore:
 
