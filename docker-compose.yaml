@@ -30,6 +30,7 @@ services:
     volumes:
       - datastore:/data/db
     command: --bind_ip 0.0.0.0
+    network: host
 
 volumes:
   datastore:
