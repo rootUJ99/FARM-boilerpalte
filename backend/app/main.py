@@ -19,6 +19,11 @@ def get_application():
     async def startup_db_client():
         _app.mongodb_client = AsyncIOMotorClient(settings.DATABASE_URI)
         _app.mongodb = app.mongodb_client[settings.DB_NAME]
+        print('-------------------------------')
+        print('-------------------------------')
+        print(settings.DATABASE_URI, settings.DB_NAME)
+        print('-------------------------------')
+        print('-------------------------------')
 
 
     @_app.on_event("shutdown")
