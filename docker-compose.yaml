@@ -29,6 +29,7 @@ services:
       - "27017"
     volumes:
       - datastore:/data/db
+    command: --bind_ip 0.0.0.0
 
 volumes:
   datastore:
