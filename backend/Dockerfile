@@ -1,6 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9-alpine3.14
-
-RUN apk --no-cache add curl
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 
 ENV PYTHONPATH "${PYTHONPATH}:/"
 ENV PORT=8000
