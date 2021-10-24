@@ -8,7 +8,7 @@ function App() {
     (async () => {
       try {
 
-        const data = await fetch('http://localhost:8000/api/v1/start');
+        const data = await fetch('http://app-backend:8000/api/v1/start');
         const jsonData = await data.json();
         setData(jsonData);
       }

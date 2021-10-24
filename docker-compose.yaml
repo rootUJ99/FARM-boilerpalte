@@ -7,6 +7,8 @@ services:
       target: production
     ports:
       - "80:80"
+    depends_on:
+      - app-backend
 
   app-backend:
     build: ./backend
