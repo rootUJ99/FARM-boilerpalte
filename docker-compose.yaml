@@ -5,6 +5,8 @@ services:
     build: 
       context: ./frontend
       target: production
+    ports:
+      - "80:80"
 
   app-backend:
     build: ./backend
