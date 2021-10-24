@@ -8,7 +8,7 @@ function App() {
     (async () => {
       try {
 
-        const data = await fetch(`http://${process.env.REACT_APP_API_BASE_URL}/api/v1/start`);
+        const data = await fetch(`http://${process.env.REACT_APP_API_BASE_URL}:3000/api/v1/start`);
         const jsonData = await data.json();
         setData(jsonData);
       }
