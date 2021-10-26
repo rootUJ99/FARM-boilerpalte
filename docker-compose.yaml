@@ -12,7 +12,7 @@ services:
     networks:
       default:
         aliases:
-          -farm-fe
+          - farm-fe
 
   app-backend:
     build: ./backend
