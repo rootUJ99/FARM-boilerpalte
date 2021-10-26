@@ -20,6 +20,10 @@ services:
       - "8000"
     depends_on: 
       - database
+    networks:
+      default:
+        aliases:
+          - farm.api
 
   database:
     image: mongo
