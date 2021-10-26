@@ -9,6 +9,10 @@ services:
       - "80:80"
     depends_on:
       - app-backend
+    networks:
+      default:
+        aliases:
+          -farm-fe
 
   app-backend:
     build: ./backend
