@@ -1,3 +1,0 @@
- ip addr show eth0 | grep "inet\b" | awk '{print $2}'
-
- BACKEND_CORS_ORIGINS=["http://localhost:8000", "https://localhost:8000", "http://localhost", "https://localhost", "http://localhost:3000", "http://app-frontend", "http://app-frontend:3000", "http://farm.api", "http://farm.api:8000"]   
